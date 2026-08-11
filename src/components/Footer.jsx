@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoIcon from './LogoIcon';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,11 +11,7 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="footer-brand-section">
             <div className="footer-logo">
-              <LogoIcon size={36} />
-              <div>
-                <h3 className="footer-logo-title" style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, margin: 0 }}>Small Wonders</h3>
-                <span className="footer-logo-subtitle" style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--cream-base)' }}>Child Clinic & Dental Studio</span>
-              </div>
+              <img src="/assets/logo.png" alt="Small Wonders Logo" className="footer-logo-img" />
             </div>
             <p className="footer-desc">
               A gentle, friendly space dedicated to providing the highest quality pediatric healthcare and children's dentistry. We believe in fear-free, playful, and expert care.

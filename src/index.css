@@ -61,7 +61,13 @@
 
 body {
   font-family: var(--font-sans);
-  background: var(--gradient-cream);
+  background-color: var(--cream-base);
+  background-image: 
+    linear-gradient(180deg, rgba(255, 253, 249, 0.88) 0%, rgba(250, 246, 238, 0.94) 100%), 
+    url('/assets/hero_bg.png');
+  background-repeat: repeat;
+  background-size: 320px;
+  background-attachment: fixed;
   color: var(--text-dark);
   line-height: 1.65;
   overflow-x: hidden;
@@ -203,6 +209,13 @@ a {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -563,6 +576,14 @@ a {
   margin-bottom: 24px;
 }
 
+.footer-logo-img {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
 .footer-logo-title {
   color: var(--white);
   font-size: 1.65rem;
@@ -844,8 +865,23 @@ a {
 }
 
 /* ─────────────────────────────────────────
-   PREMIUM HERO SECTION STYLES
+    PREMIUM HERO SECTION STYLES
 ───────────────────────────────────────── */
+
+/* Premium Hero Section with Custom Background Pattern */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0 110px;
+  background-color: var(--teal-light);
+  background-image: 
+    linear-gradient(180deg, rgba(235, 247, 249, 0.2) 0%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 1) 100%), 
+    url('/assets/hero_premium_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
 
 /* Animated gradient orbs behind hero */
 .hero-orb {
@@ -1083,15 +1119,21 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 18px;
-  padding: 12px 20px;
-  box-shadow: 0 12px 32px rgba(29, 122, 140, 0.12), 0 2px 8px rgba(0,0,0,0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 12px 22px;
+  box-shadow: 0 16px 40px rgba(29, 122, 140, 0.1), 0 2px 8px rgba(0,0,0,0.02);
   z-index: 2;
-  animation: floatCard 4s ease-in-out infinite;
+  transition: all var(--transition-normal);
+  animation: floatCard 5s ease-in-out infinite;
+}
+.hero-float-card:hover {
+  transform: translateY(-5px) scale(1.04);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 48px rgba(29, 122, 140, 0.18);
 }
 .hero-float-rating {
   top: 10%;
@@ -2343,4 +2385,34 @@ a {
   50% { transform: scaleX(0.7); transform-origin: left; }
   100% { transform: scaleX(1); transform-origin: right; }
 }
+
+/* Translucent Section overrides to let full-screen body pattern show through */
+section.section,
+section.booking-section {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color var(--transition-normal);
+}
+
+section.section[style*="var(--white)"],
+section.section[style*="white"] {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+section.section[style*="var(--cream-base)"],
+section.section[style*="cream-base"] {
+  background-color: rgba(255, 253, 249, 0.4) !important;
+}
+
+section.section[style*="var(--coral-light)"],
+section.section[style*="coral-light"] {
+  background-color: rgba(255, 240, 240, 0.5) !important;
+}
+
+section.section[style*="var(--teal-light)"],
+section.section[style*="teal-light"],
+section.booking-section {
+  background: linear-gradient(180deg, rgba(235, 247, 249, 0.45) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+}
+
 

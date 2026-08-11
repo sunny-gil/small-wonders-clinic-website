@@ -32,7 +32,7 @@ export default function Home() {
     <div className="home-page" style={{ position: 'relative', overflow: 'hidden' }}>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="section hero-section" style={{ position: 'relative', overflow: 'hidden', padding: '120px 0 100px', backgroundColor: 'var(--teal-light)' }}>
+      <section className="section hero-section">
 
         {/* Animated gradient orbs */}
         <div className="hero-orb hero-orb-1"></div>
@@ -104,7 +104,7 @@ export default function Home() {
             <div className="hero-img-ring"></div>
 
             <img
-              src="/assets/homepage_mockup.png"
+              src="/assets/homepage_hero_new.png"
               alt="Small Wonders — Dr. Barkha with a happy child patient"
               className="hero-img"
             />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import LogoIcon from './LogoIcon';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,11 +20,7 @@ export default function Navbar() {
 
         {/* Brand Logo */}
         <Link to="/" className="navbar-brand" onClick={closeMenu}>
-          <LogoIcon size={38} />
-          <div className="logo-text-container">
-            <span className="logo-title">Small Wonders</span>
-            <span className="logo-subtitle">Child Clinic &amp; Dental Studio</span>
-          </div>
+          <img src="/assets/logo.png" alt="Small Wonders Logo" className="navbar-logo-img" />
         </Link>
 
         {/* Hamburger — mobile only */}
