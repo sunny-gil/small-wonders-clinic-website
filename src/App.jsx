@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import ScrollToTop from './components/ScrollToTop';
 import TopLoadingBar from './components/TopLoadingBar';
+import FloatingDecorations from './components/FloatingDecorations';
 
 // Lazy loaded page components
 const Home = lazy(() => import('./pages/Home'));
@@ -20,7 +21,8 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+        <FloatingDecorations />
         {/* Navigation Bar */}
         <Navbar />
 

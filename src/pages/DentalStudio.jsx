@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BlobDecoration from '../components/BlobDecoration';
 import useSEO from '../hooks/useSEO';
 
 export default function DentalStudio() {
@@ -9,95 +8,99 @@ export default function DentalStudio() {
     description: "Discover children's dentistry tailored to dental comfort at Small Wonders Nagpur. Gentle cavities checkups, fluoride therapies, and habit counseling with Dr. Barkha (MDS).",
     keywords: "pediatric dentist jaripatka, painless cavity filling kids, tooth alignment child, children tooth decay nagpur"
   });
+
   const dentalServices = [
     {
       title: "First Dental Checkup",
       desc: "An easy, non-clinical inspection where kids ride the dentist chair, count their teeth, and learn simple brushing tips.",
-      icon: "🦷"
+      icon: "🦷",
+      color: "var(--color-green-light)"
     },
     {
       title: "Fluoride Protection Therapy",
       desc: "A quick, tasty gel brush-on that strengthens tooth enamel and acts as an invisible shield against decay.",
-      icon: "🛡️"
+      icon: "🛡️",
+      color: "var(--color-pink-light)"
     },
     {
       title: "Pit & Fissure Sealants",
       desc: "A thin protective coating filled into deep tooth grooves to prevent food from getting stuck and forming cavities.",
-      icon: "✨"
+      icon: "✨",
+      color: "var(--color-blue-light)"
     },
     {
       title: "Gentle Tooth Restorations",
       desc: "Painless fillings using colorful and biocompatible composite materials, applied with kid-focused comfort methods.",
-      icon: "🩹"
+      icon: "🩹",
+      color: "var(--color-yellow-light)"
     },
     {
       title: "Space Maintainers",
       desc: "Custom metallic or acrylic bands that keep spaces open when baby teeth fall out early, ensuring straight permanent teeth.",
-      icon: "📐"
+      icon: "📐",
+      color: "var(--color-green-light)"
     },
     {
       title: "Habit Breaking Appliances",
       desc: "Comfortable braces/guards that gently help children stop thumbsucking or tongue thrusting to prevent bite issues.",
-      icon: "👍"
+      icon: "👍",
+      color: "var(--color-pink-light)"
     }
   ];
 
   return (
-    <div className="dental-studio-page animate-fade-in-up" style={{ position: 'relative', overflow: 'hidden' }}>
-      <BlobDecoration />
+    <div className="dental-studio-page" style={{ position: 'relative', overflow: 'hidden' }}>
+      
+      {/* ─── 1. SUBPAGE HERO SECTION ─── */}
+      <section className="subpage-hero-section">
+        {/* Background illustration photo */}
+        <div className="subpage-hero-bg">
+          <img
+            src="/assets/dental_clinic_hero.png"
+            alt="Pediatric dental studio with cartoon theme"
+            className="subpage-hero-bg-img"
+          />
+          <div className="subpage-hero-bg-overlay"></div>
+        </div>
 
-      {/* Hero Section */}
-      <section className="section" style={{ padding: '80px 0 40px' }}>
-        <div className="container hero-grid">
-          
-          <div className="text-left-responsive" style={{ width: '100%' }}>
-            <span className="section-tag">Children's Dentistry</span>
-            <h1 style={{ marginBottom: '20px' }}>Sparkling, Cavity-Free Smiles</h1>
-            <p style={{ fontSize: '1.2rem', color: 'var(--text-medium)', marginBottom: '32px' }}>
+        {/* Curved teal blob with content */}
+        <div className="subpage-hero-blob animate-blob-reveal">
+          <div className="subpage-hero-blob-inner">
+            {/* Tag */}
+            <div className="subpage-hero-tag animate-hero-fade-up" style={{ animationDelay: '0.2s' }}>
+              <span>🦷 CHILDREN'S DENTISTRY</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="subpage-hero-title animate-hero-fade-up" style={{ animationDelay: '0.4s' }}>
+              Sparkling, Cavity-Free Smiles
+            </h1>
+
+            {/* Description */}
+            <p className="subpage-hero-desc animate-hero-fade-up" style={{ animationDelay: '0.6s' }}>
               We transform pediatric dentistry into a positive adventure! From painless tooth counting to fluoride therapies and gentle cavity checkups, we keep Nagpur's children smiling.
             </p>
-            <div className="flex-row-responsive">
-              <Link to="/contact" className="btn btn-primary">
-                Book a Dental Visit
-              </Link>
-            </div>
           </div>
-
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <img 
-              src="/assets/dental_illustration.png" 
-              alt="Friendly dental care at Small Wonders" 
-              loading="lazy"
-              style={{
-                width: '100%',
-                maxWidth: '320px',
-                borderRadius: 'var(--radius-lg)',
-                boxShadow: 'var(--shadow-md)',
-                border: '6px solid var(--white)'
-              }}
-            />
-          </div>
-
         </div>
       </section>
 
-      {/* Dental Specialties Grid */}
-      <section className="section" style={{ backgroundColor: 'var(--white)', borderTop: '1px solid rgba(29,122,140,0.05)', borderBottom: '1px solid rgba(29,122,140,0.05)' }}>
-        <div className="container">
-          <div className="section-title-wrapper">
-            <span className="section-tag">Preventive & Restorative</span>
-            <h2>Our Dental Treatments</h2>
-            <p className="section-desc">Painless, fun, and preventive dentistry designed specifically for baby teeth.</p>
+      {/* ─── 2. DENTAL SPECIALTIES GRID ─── */}
+      <section className="section specialties-section" style={{ backgroundColor: 'var(--white)', padding: '100px 0', position: 'relative' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="section-title-wrapper animate-fade-in-up">
+            <span className="section-tag" style={{ color: 'var(--color-pink)' }}>Preventive &amp; Restorative</span>
+            <h2 className="section-title" style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-dark)' }}>Our Dental Treatments</h2>
+            <p className="section-desc" style={{ color: 'var(--text-medium)' }}>Painless, fun, and preventive dentistry designed specifically for baby teeth.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '32px', marginTop: '40px' }}>
             {dentalServices.map((service, index) => (
-              <div key={index} className="card" style={{ display: 'flex', gap: '20px', textAlign: 'left', alignItems: 'flex-start' }}>
+              <div key={index} className="card animate-fade-in-up" style={{ display: 'flex', gap: '20px', textAlign: 'left', alignItems: 'flex-start', backgroundColor: 'var(--white)', padding: '32px 24px', borderRadius: 'var(--radius-md)', border: '1px solid rgba(87,184,148,0.08)', transition: 'all 0.3s ease' }}>
                 <div style={{
                   width: '52px',
                   height: '52px',
                   borderRadius: '12px',
-                  backgroundColor: 'var(--coral-light)',
+                  backgroundColor: service.color,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -107,51 +110,60 @@ export default function DentalStudio() {
                   {service.icon}
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.25rem', marginBottom: '8px', color: 'var(--teal-primary)' }}>{service.title}</h3>
-                  <p style={{ fontSize: '0.95rem' }}>{service.desc}</p>
+                  <h3 style={{ fontSize: '1.25rem', marginBottom: '8px', color: 'var(--text-dark)', fontFamily: 'var(--font-heading)' }}>{service.title}</h3>
+                  <p style={{ fontSize: '0.92rem', color: 'var(--text-medium)', lineHeight: 1.55 }}>{service.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Bottom Wave divider to pink light background */}
+        <div className="wavy-divider wavy-divider-bottom" style={{ zIndex: 5 }}>
+          <svg viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,32 C240,96,480,96,720,32C960,-32,1200,-32,1440,32V74H1200C960,74,720,74,480,74C240,74,0,74,0,74Z" fill="var(--color-pink-light)"></path>
+          </svg>
+        </div>
       </section>
 
-      {/* Brushing Guidelines or Tips Section */}
-      <section className="section" style={{ padding: '80px 0' }}>
+      {/* ─── 3. BRUSHING GUIDELINES SECTION ─── */}
+      <section className="section guidelines-section" style={{ backgroundColor: 'var(--color-pink-light)', padding: '100px 0 90px', position: 'relative' }}>
         <div className="container">
-          <div className="two-col-grid" style={{
-            backgroundColor: 'var(--teal-primary)',
+          <div className="two-col-grid animate-fade-in-up" style={{
+            backgroundColor: 'var(--text-dark)',
             color: 'var(--white)',
             borderRadius: 'var(--radius-lg)',
             padding: '48px',
-            textAlign: 'left'
+            textAlign: 'left',
+            boxShadow: 'var(--shadow-lg)'
           }}>
             <div>
-              <h2 style={{ color: 'var(--white)', marginBottom: '16px' }}>Dr. Barkha's Brushing Rule of "2-2"</h2>
-              <p style={{ color: 'var(--cream-base)', marginBottom: '24px' }}>
+              <h2 style={{ color: 'var(--white)', marginBottom: '16px', fontFamily: 'var(--font-heading)', fontSize: '2rem' }}>Dr. Barkha's Brushing Rule of "2-2"</h2>
+              <p style={{ color: 'var(--white)', opacity: 0.85, marginBottom: '24px', fontSize: '0.95rem', lineHeight: 1.6 }}>
                 Help your children remember the golden standard for oral hygiene. Ask them to brush:
               </p>
               <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-                <div style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '16px', borderRadius: 'var(--radius-md)', flex: 1, minWidth: '120px' }}>
-                  <h4 style={{ color: 'var(--coral-primary)', fontSize: '2.5rem', fontWeight: 800 }}>2</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--white)' }}>Times a day (Morning & Before Bed)</p>
+                <div style={{ backgroundColor: 'rgba(255,255,255,0.08)', padding: '20px', borderRadius: 'var(--radius-md)', flex: 1, minWidth: '120px' }}>
+                  <h4 style={{ color: 'var(--color-yellow)', fontSize: '2.5rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>2</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--white)', opacity: 0.9 }}>Times a day (Morning &amp; Before Bed)</p>
                 </div>
-                <div style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '16px', borderRadius: 'var(--radius-md)', flex: 1, minWidth: '120px' }}>
-                  <h4 style={{ color: 'var(--coral-primary)', fontSize: '2.5rem', fontWeight: 800 }}>2</h4>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--white)' }}>Minutes of gentle brushing each time</p>
+                <div style={{ backgroundColor: 'rgba(255,255,255,0.08)', padding: '20px', borderRadius: 'var(--radius-md)', flex: 1, minWidth: '120px' }}>
+                  <h4 style={{ color: 'var(--color-yellow)', fontSize: '2.5rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>2</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--white)', opacity: 0.9 }}>Minutes of gentle brushing each time</p>
                 </div>
               </div>
             </div>
 
-            <div style={{ backgroundColor: 'rgba(255,255,255,0.05)', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255,255,255,0.1)', width: '100%' }}>
-              <h3 style={{ color: 'var(--white)', marginBottom: '12px' }}>Avoid Milk at Bedtime</h3>
-              <p style={{ color: 'var(--cream-base)', fontSize: '0.95rem', lineHeight: 1.5 }}>
-                Leaving a bottle of milk or juice in your child's mouth while they sleep is a major cause of early childhood caries ("nursing bottle syndrome"). Try to switch to water or clean their gums/teeth with a damp cloth before they fall asleep.
+            <div style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255,255,255,0.08)', width: '100%' }}>
+              <h3 style={{ color: 'var(--white)', marginBottom: '12px', fontFamily: 'var(--font-heading)', fontSize: '1.4rem' }}>Avoid Bedtime Sugars</h3>
+              <p style={{ color: 'var(--white)', opacity: 0.85, fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Leaving a bottle of milk, juice, or sweetened formula in your child's mouth while they sleep is a major cause of early childhood caries ("nursing bottle syndrome"). Try to switch to water or clean their gums/teeth with a damp cloth before they fall asleep.
               </p>
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

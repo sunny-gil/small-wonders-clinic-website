@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import BlobDecoration from '../components/BlobDecoration';
 import useSEO from '../hooks/useSEO';
 
 export default function Contact() {
@@ -8,6 +7,15 @@ export default function Contact() {
     description: "Schedule a visit for your child at Small Wonders Nagpur. Contact details for pediatrician Dr. Barkha, phone numbers, WhatsApp link, address, and online booking form.",
     keywords: "book child doctor slot, pediatric clinic contact number, jaripatka clinic location, children dentist whatsapp"
   });
+  // Get today's date in local YYYY-MM-DD format
+  const getTodayDateString = () => {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  };
+  const todayStr = getTodayDateString();
 
   const [formData, setFormData] = useState({
     parentName: '',
@@ -24,9 +32,15 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let val = value;
+    if (name === 'phone') {
+      val = value.replace(/\D/g, '').slice(0, 10);
+    } else if (name === 'parentName' || name === 'childName') {
+      val = value.replace(/[^a-zA-Z\s]/g, '');
+    }
     setFormData({
       ...formData,
-      [name]: value
+      [name]: val
     });
     // Clear error
     if (errors[name]) {
@@ -39,19 +53,39 @@ export default function Contact() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.parentName.trim()) newErrors.parentName = 'Parent name is required';
+    
+    // Parent Name Validation (Letters & spaces only)
+    if (!formData.parentName.trim()) {
+      newErrors.parentName = 'Parent name is required';
+    } else if (!/^[a-zA-Z\s]{2,50}$/.test(formData.parentName.trim())) {
+      newErrors.parentName = 'Parent name should only contain letters and spaces (2-50 characters)';
+    }
+
+    // Indian Phone Number Validation (10 digits starting with 6-9)
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone.trim())) {
-      newErrors.phone = 'Please enter a valid 10-digit phone number';
+    } else if (!/^[6-9]\d{9}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9';
     }
-    if (!formData.childName.trim()) newErrors.childName = 'Child name is required';
+
+    // Child Name Validation (Letters & spaces only)
+    if (!formData.childName.trim()) {
+      newErrors.childName = 'Child name is required';
+    } else if (!/^[a-zA-Z\s]{2,50}$/.test(formData.childName.trim())) {
+      newErrors.childName = 'Child name should only contain letters and spaces (2-50 characters)';
+    }
+
     if (!formData.childAge.trim()) {
       newErrors.childAge = 'Child age is required';
     } else if (isNaN(formData.childAge) || Number(formData.childAge) < 0 || Number(formData.childAge) > 18) {
       newErrors.childAge = 'Please enter a valid child age (0 - 18)';
     }
-    if (!formData.preferredDate) newErrors.preferredDate = 'Please select a preferred date';
+
+    if (!formData.preferredDate) {
+      newErrors.preferredDate = 'Please select a preferred date';
+    } else if (formData.preferredDate < todayStr) {
+      newErrors.preferredDate = 'Preferred date cannot be in the past';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -79,16 +113,37 @@ export default function Contact() {
 
   return (
     <div className="contact-page animate-fade-in-up" style={{ position: 'relative', overflow: 'hidden' }}>
-      <BlobDecoration />
+      
+      {/* ─── 1. SUBPAGE HERO SECTION ─── */}
+      <section className="subpage-hero-section">
+        {/* Background illustration photo */}
+        <div className="subpage-hero-bg">
+          <img
+            src="/assets/about_clinic_hero.png"
+            alt="Small Wonders kids clinic waiting area"
+            className="subpage-hero-bg-img"
+          />
+          <div className="subpage-hero-bg-overlay"></div>
+        </div>
 
-      {/* Page Header */}
-      <section className="section" style={{ padding: '80px 0 40px' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-          <span className="section-tag">Book a Visit</span>
-          <h1 style={{ marginBottom: '20px' }}>Contact & Appointment Booking</h1>
-          <p style={{ fontSize: '1.2rem', color: 'var(--text-medium)', marginBottom: '32px' }}>
-            Fill out the form below or contact us directly on Call/WhatsApp to schedule a stress-free appointment.
-          </p>
+        {/* Curved teal blob with content */}
+        <div className="subpage-hero-blob animate-blob-reveal">
+          <div className="subpage-hero-blob-inner">
+            {/* Tag */}
+            <div className="subpage-hero-tag animate-hero-fade-up" style={{ animationDelay: '0.2s' }}>
+              <span>📅 EASY BOOKING</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="subpage-hero-title animate-hero-fade-up" style={{ animationDelay: '0.4s' }}>
+              Book a Visit
+            </h1>
+
+            {/* Description */}
+            <p className="subpage-hero-desc animate-hero-fade-up" style={{ animationDelay: '0.6s' }}>
+              Fill out the form below or contact us directly on Call or WhatsApp to schedule a stress-free appointment for your child at Nagpur.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -105,8 +160,17 @@ export default function Contact() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.95rem' }}>
                 <div>
                   <strong>📍 Address:</strong><br />
-                  Shop No 1, Choudhary Chowk, L, Opposite Union Bank,<br />
-                  Jaripatka, Nagpur-440014, Maharashtra
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Small+Wonders+Child+Clinic+and+Dental+Studio,+Jaripatka,+Nagpur"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                    onMouseOver={(e) => e.target.style.color = 'var(--color-pink)'}
+                    onMouseOut={(e) => e.target.style.color = 'inherit'}
+                  >
+                    Shop No 1, Choudhary Chowk, L, Opposite Union Bank,<br />
+                    Jaripatka, Nagpur-440014, Maharashtra
+                  </a>
                 </div>
                 <div>
                   <strong>📞 Call Us:</strong><br />
@@ -188,6 +252,7 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    maxLength={10}
                     style={{
                       padding: '12px 16px',
                       borderRadius: 'var(--radius-sm)',
@@ -280,6 +345,7 @@ export default function Contact() {
                       name="preferredDate"
                       value={formData.preferredDate}
                       onChange={handleChange}
+                      min={todayStr}
                       style={{
                         padding: '12px 16px',
                         borderRadius: 'var(--radius-sm)',
