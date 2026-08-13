@@ -29,7 +29,7 @@ export default function HappyParents() {
         {/* Background illustration photo */}
         <div className="subpage-hero-bg">
           <img
-            src="/assets/about_clinic_hero.png"
+            src="/assets/reviews_hero_indian.webp"
             alt="Small Wonders kids clinic play waiting area"
             className="subpage-hero-bg-img"
           />

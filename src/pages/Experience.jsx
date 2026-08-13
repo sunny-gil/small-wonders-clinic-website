@@ -60,7 +60,7 @@ export default function Experience() {
         {/* Background illustration photo */}
         <div className="subpage-hero-bg">
           <img
-            src="/assets/about_clinic_hero.png"
+            src="/assets/experience_hero_indian.webp"
             alt="Small Wonders child-friendly clinic play area"
             className="subpage-hero-bg-img"
           />
@@ -243,7 +243,7 @@ export default function Experience() {
           {/* Left Column: Image support */}
           <div style={{ position: 'relative', width: '100%' }} className="animate-fade-in-up">
             <img 
-              src="https://images.unsplash.com/photo-1579684389782-64d84b5e905d?auto=format&fit=crop&q=80&w=800" 
+              src="/assets/pledge_indian.webp" 
               alt="Small Wonders kids medical and dental pledge" 
               style={{ width: '100%', height: 'auto', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)' }} 
             />

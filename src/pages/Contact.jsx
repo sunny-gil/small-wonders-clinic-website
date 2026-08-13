@@ -119,7 +119,7 @@ export default function Contact() {
         {/* Background illustration photo */}
         <div className="subpage-hero-bg">
           <img
-            src="/assets/about_clinic_hero.png"
+            src="/assets/booking_hero_indian.webp"
             alt="Small Wonders kids clinic waiting area"
             className="subpage-hero-bg-img"
           />

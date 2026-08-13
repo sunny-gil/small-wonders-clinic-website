@@ -17,7 +17,7 @@ export default function About() {
         {/* Background illustration photo */}
         <div className="about-hero-bg">
           <img
-            src="/assets/about_clinic_hero.png"
+            src="/assets/about_hero_indian.webp"
             alt="Small Wonders child-friendly clinic environment"
             className="about-hero-bg-img"
           />
